@@ -17,5 +17,17 @@ namespace IlIlceJsonOrnek
             InitializeComponent();
         }
 
+        private void ILSorgulamaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //açık bir form varsa onu kapatmalıyız.
+            if (this.ActiveMdiChild != null)
+            {
+                this.ActiveMdiChild.Hide();
+            }
+            FormILSorgulama formILSorgulama = new FormILSorgulama();
+            formILSorgulama.MdiParent = this;
+            formILSorgulama.Show();
+            this.LayoutMdi(MdiLayout.TileVertical);
+        }
     }
 }
