@@ -24,9 +24,23 @@ namespace IlIlceJson_Bll
                 JSonString = Encoding.UTF8.GetString(data);
             }
         }
-        public List<IL> ILLERİGetir()
+        public List<IL> ILLERIGetir()
         {
-            return JsonConvert.DeserializeObject<List<IL>>(JSonString);
+
+            List<IL> ILListesi = new List<IL>();
+            var jsonData = JsonConvert.DeserializeObject<List<ILJson>>(JSonString);
+            foreach (var item in jsonData)
+            {
+                ILListesi.Add(
+                    new IL()
+                    {
+                        ILAdi=item.il,
+                        PlakaKodu=Convert.ToByte(item.plaka),
+                        ILceleri=item.ilceleri
+                    });
+            }
+            return ILListesi;
+
         }
     }
 

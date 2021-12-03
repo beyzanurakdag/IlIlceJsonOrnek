@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace IlIlceJson_EntityModels.Classlar
 {
-    public class IL
+    public class ILJson
     {
-        public string ILAdi { get; set; }
-        public byte PlakaKodu { get; set; }
-        public List<string> ILceleri { get; set; }
+        public string il { get; set; }
+        public string plaka { get; set; }
+        public List<string> ilceleri { get; set; }
 
     }
 }
