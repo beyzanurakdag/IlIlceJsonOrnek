@@ -60,7 +60,7 @@ namespace IlIlceJsonOrnek
             // ILSorgulamaToolStripMenuItem
             // 
             this.ILSorgulamaToolStripMenuItem.Name = "ILSorgulamaToolStripMenuItem";
-            this.ILSorgulamaToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
+            this.ILSorgulamaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.ILSorgulamaToolStripMenuItem.Text = "IL sorgulama";
             this.ILSorgulamaToolStripMenuItem.Click += new System.EventHandler(this.ILSorgulamaToolStripMenuItem_Click);
             // 
@@ -75,8 +75,9 @@ namespace IlIlceJsonOrnek
             // ILCESorgulamaToolStripMenuItem
             // 
             this.ILCESorgulamaToolStripMenuItem.Name = "ILCESorgulamaToolStripMenuItem";
-            this.ILCESorgulamaToolStripMenuItem.Size = new System.Drawing.Size(193, 26);
+            this.ILCESorgulamaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.ILCESorgulamaToolStripMenuItem.Text = "ILCE sorgulama";
+            this.ILCESorgulamaToolStripMenuItem.Click += new System.EventHandler(this.ILCESorgulamaToolStripMenuItem_Click);
             // 
             // Form1
             // 

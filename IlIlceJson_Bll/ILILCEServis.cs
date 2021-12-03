@@ -52,6 +52,54 @@ namespace IlIlceJson_Bll
             }
             return liste;
         }
+        public List<ILILCEBilgileri> ILAdinaGoreILceleriGetir(string ILAdi)
+        {
+            List<ILILCEBilgileri> liste = new List<ILILCEBilgileri>();
+
+            JObject j = JObject.Parse(JsonString);
+
+            List<string> ilclerListem =
+                ilServisi.ILLERIGetir().Single(x => x.ILAdi == ILAdi).ILceleri;
+
+            //ağrı ---> agri // ismi json içindeki gibi değiştirdik
+            ILAdi = DilIslemleri.TurkceKarakterleriIngilizceyeCevir(ILAdi.ToLower()
+                );
+
+            //ilçeler de json içinde ingilizce karakterli halde yazıyor.
+            // bu nedenle onu da çevirdik
+            ilclerListem = ilclerListem.Select(x => DilIslemleri.TurkceKarakterleriIngilizceyeCevir(x.ToLower())).ToList();
+
+            foreach (var item in ilclerListem)
+            {
+                //var data = j.SelectToken(ILAdi.ToLower()).SelectToken(item);
+                var data = j.SelectToken(ILAdi).SelectToken(item);
+
+                // bazı illerin ilçelerinde null gelme durumuna yakalanmayalım.
+                if (data != null)
+                {
+                    ILILCEBilgileri bilgim = new ILILCEBilgileri();
+                    bilgim.Ismi = data["belediye-ismi"] == null ? "" : data["belediye-ismi"].ToObject<string>();
+                    bilgim.Tel = data["belediye-tel"]==null ? "" :data["belediye-tel"].ToObject<string>();
+                    bilgim.Faks = data["belediye-faks"]==null ? "" : data["belediye-faks"].ToObject<string>();
+                    bilgim.Mail = data["belediye-mail"] == null ? "" : data["belediye-mail"].ToObject<string>();
+                    bilgim.Web = data["belediye-web"] == null ? "" : data["belediye-web"].ToObject<string>();
+                    bilgim.Web = data["nufus"] == null ? "" : data["nufus"].ToObject<string>();
+                    bilgim.Bilgi = data["bilgi"]==null ? "" : data["bilgi"].ToObject<string>();
+                    bilgim.Bilgi = data["bolge"] == null ? "" : data["bolge"].ToObject<string>();
+
+                    bilgim.Alankodu= data["alankodu"]==null ? "" : data["alankodu"].ToObject<string>();
+                 //   bilgim.Plaka = Convert.ToByte(data["plaka"].ToObject<string>());
+
+                    liste.Add(bilgim);
+                }
+
+            }
+
+
+
+
+            return liste;
+        }
     }
 
 }

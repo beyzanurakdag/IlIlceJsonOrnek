@@ -46,6 +46,9 @@ namespace IlIlceJsonOrnek
 
                 listView1.Items.Add(deger);
             }
+            groupBoxIL.Enabled = false;
+            groupBoxIL.Visible = false;
+           
         }
 
         private void btnSec_Click(object sender, EventArgs e)
@@ -64,6 +67,15 @@ namespace IlIlceJsonOrnek
             deger.SubItems.Add(secilenILBilgisi.Web);
             listView1.Items.Add(deger);
 
+        }
+
+        private void detayGosterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            groupBoxIL.Visible = true;
+            groupBoxIL.Enabled = true;
+            ILILCEBilgileri secilenIL = (ILILCEBilgileri)
+            listView1.FocusedItem.Tag;
+            richTextBoxIL.Text = secilenIL.Bilgi;
         }
     }
 }
