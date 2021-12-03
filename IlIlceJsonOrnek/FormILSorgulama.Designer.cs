@@ -95,7 +95,7 @@ namespace IlIlceJsonOrnek
             // 
             // comboXILSecimi
             // 
-            this.comboXILSecimi.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.comboXILSecimi.BackColor = System.Drawing.Color.Silver;
             this.comboXILSecimi.FormattingEnabled = true;
             this.comboXILSecimi.Location = new System.Drawing.Point(148, 25);
             this.comboXILSecimi.Name = "comboXILSecimi";

@@ -20,6 +20,10 @@ namespace IlIlceJsonOrnek
         }
         ILServis ilServisim = new ILServis();
         ILILCEServis ILILCEServisim = new ILILCEServis();
+        private object comboBoxILSecimi;
+        private IL secilenIL;
+
+        public object ListView1 { get; private set; }
 
         private void FormILSorgulama_Load(object sender, EventArgs e)
         {
@@ -46,8 +50,20 @@ namespace IlIlceJsonOrnek
 
         private void btnSec_Click(object sender, EventArgs e)
         {
-            //ILILCEServis deneme = new ILILCEServis();
-            //deneme.BilgileriGetir();
+            secilenIL = comboXILSecimi.SelectedItem as IL;
+            //comboboxta hangi ili seçtiyse onun bilgilerini listview de görelim.
+            //IL SecilenIL = (IL)comboBoxILSecimi.SelectedItem;
+            ILILCEBilgileri secilenILBilgisi = ILILCEServisim.BilgileriGetir().Where(x => x.Plaka == secilenIL.PlakaKodu).FirstOrDefault();
+            listView1.Items.Clear();
+            ListViewItem deger = new ListViewItem();
+            deger.Text = secilenILBilgisi.Ismi;
+            deger.Tag = secilenILBilgisi;
+            deger.SubItems.Add(secilenILBilgisi.Tel);
+            deger.SubItems.Add(secilenILBilgisi.Faks);
+            deger.SubItems.Add(secilenILBilgisi.Mail);
+            deger.SubItems.Add(secilenILBilgisi.Web);
+            listView1.Items.Add(deger);
+
         }
     }
 }
